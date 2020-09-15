@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shpun.mapper.MenuMapper">
+
+    <resultMap type="com.shpun.model.Menu" id="MenuResultMap">
+        <result property="id" column="id"/>
+        <result property="menuName" column="menu_name"/>
+        <result property="url" column="url"/>
+        <result property="permission" column="permission"/>
+    </resultMap>
+
+    <select id="getPermissionByUserId" resultType="java.lang.String">
+        select
+            menu.permission
+        from `user`
+        left join user_role on user_role.user_id = `user`.id
+        left join role on role.id = user_role.role_id
+        left join role_menu on role_menu.role_id = role.id
+        left join menu on menu.id = role_menu.menu_id
+        where `user`.enable = 1 and `user`.id = #{userId}
+    </select>
+
+    <insert id="insert" parameterType="com.shpun.model.Menu" useGeneratedKeys="true" keyProperty="id">
+        insert into menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="menuName != null">
+                menu_name,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="permission != null">
+                permission,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="menuName != null">
+                #{menuName},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="permission != null">
+                #{permission},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>
