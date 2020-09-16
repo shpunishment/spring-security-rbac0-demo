@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.shpun.mapper.MenuMapper">
+<mapper namespace="com.shpun.rbac0.mapper.MenuMapper">
 
-    <resultMap type="com.shpun.model.Menu" id="MenuResultMap">
+    <resultMap type="com.shpun.rbac0.model.Menu" id="MenuResultMap">
         <result property="id" column="id"/>
         <result property="menuName" column="menu_name"/>
         <result property="url" column="url"/>
@@ -21,7 +21,7 @@
         where `user`.enable = 1 and `user`.id = #{userId}
     </select>
 
-    <insert id="insert" parameterType="com.shpun.model.Menu" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.shpun.rbac0.model.Menu" useGeneratedKeys="true" keyProperty="id">
         insert into menu
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="menuName != null">

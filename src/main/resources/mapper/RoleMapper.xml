@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.shpun.mapper.RoleMapper">
+<mapper namespace="com.shpun.rbac0.mapper.RoleMapper">
 
-    <resultMap type="com.shpun.model.Role" id="RoleResultMap">
+    <resultMap type="com.shpun.rbac0.model.Role" id="RoleResultMap">
         <result property="id" column="id"/>
         <result property="roleName" column="role_name"/>
     </resultMap>
 
-    <insert id="insert" parameterType="com.shpun.model.Role" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.shpun.rbac0.model.Role" useGeneratedKeys="true" keyProperty="id">
         insert into role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="roleName != null">
