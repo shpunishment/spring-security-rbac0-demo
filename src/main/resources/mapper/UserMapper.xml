@@ -3,7 +3,7 @@
 
 <mapper namespace="com.shpun.rbac0.mapper.UserMapper">
 
-    <resultMap type="com.shpun.model.User" id="UserResultMap">
+    <resultMap type="com.shpun.rbac0.model.User" id="UserResultMap">
         <result property="id" column="id"/>
         <result property="nickname" column="nickname"/>
         <result property="username" column="username"/>
